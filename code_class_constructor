@@ -1,0 +1,33 @@
+// class constructor explicitely defined
+class Packet;
+bit [31:0] addr;
+
+function new;
+addr = 32'hfade_called;
+endfunction
+endclass
+
+module th;
+initial
+begin
+Packet pkt = new;
+
+$display ("addr=0x%0h", pkt.addr);
+end
+endmodule
+
+
+
+
+
+
+// class constructor implicitely called
+class Packet;
+  bit [31:0] addr;
+endclass
+
+module th;
+initial begin Packet pkt = new;
+$display ("addr=0x%0h",pkt.addr);
+end 
+endmodule
